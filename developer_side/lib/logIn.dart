@@ -10,6 +10,9 @@ class lonIn extends StatefulWidget {
 }
 
 class _lonInState extends State<lonIn> {
+
+  bool _secureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +71,7 @@ class _lonInState extends State<lonIn> {
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Username or E-mail',
+                  icon: Icon(Icons.email),
 
                 ),
               )
@@ -92,16 +96,24 @@ class _lonInState extends State<lonIn> {
                       ),
 
 
-                      child: const Padding(
+                      child:  Padding(
 
                           padding:  EdgeInsets.symmetric(horizontal: 22.0),
                           child: TextField(
-                            obscureText: true,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Password',
 
+                              suffixIcon: IconButton(
+                                icon: Icon(_secureText ? Icons.remove_red_eye: Icons.security),
+                                onPressed: (){
+                                  setState(() {
+                                    _secureText =! _secureText;
+                                  });
+                                },
+                              )
                             ),
+                            obscureText: _secureText,
                           )
                       )
                   )
