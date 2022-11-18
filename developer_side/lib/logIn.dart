@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'signIn.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class lonIn extends StatefulWidget {
   const lonIn({Key? key}) : super(key: key);
@@ -10,189 +14,206 @@ class lonIn extends StatefulWidget {
 }
 
 class _lonInState extends State<lonIn> {
-
   bool _secureText = true;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late String _email,_password;
+
+  final _auth = FirebaseAuth.instance;
+
+  void _signIn() async {
+    try {
+      final newUser = await _auth.signInWithEmailAndPassword(
+          email: _email, password: _password);
+      if (newUser != null) {
+        print("Successful!");
+      } else {
+        print("Error!");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.grey[300],
-        body: SafeArea(
-            child: Center(
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-             children:
-            [
-              const SizedBox(height: 50,),
 
-             Text(
-                'ShekhoBha!', style:
-              GoogleFonts.bebasNeue(
-                fontSize: 40,
-                color: Colors.deepPurple
+    return Scaffold(
+
+        backgroundColor: Colors.grey[300],
+        body: Container(
+          padding: EdgeInsets.all(8.0),
+            child: Form(
+              key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const SizedBox(
+                height: 50,
               ),
+
+              Text(
+                'ShekhoBha!',
+                style: GoogleFonts.bebasNeue(
+                    fontSize: 40, color: Colors.deepPurple),
               ),
 
               const SizedBox(height: 10),
 
-                Text(
+              Text(
                 'Know-Ask-Learn-Grow',
                 style: GoogleFonts.bebasNeue(
-                  fontSize:20,
-
+                  fontSize: 20,
+                ),
               ),
-              ),
 
-
-               SizedBox(height: 25),
-
+              SizedBox(height: 25),
 
               //------------------- email text field-------------------
 
-
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-
-              child: Container(
-
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-
-              border: Border.all(color: Colors.white),
-                borderRadius: BorderRadius.circular(20)
-              ),
-
-
-             child: const Padding(
-
-                 padding:  EdgeInsets.symmetric(horizontal: 22.0),
-             child: TextField(
-               textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Username or E-mail',
-                  icon: Icon(Icons.email),
-
-                ),
-              )
-             )
-            )
-            ),
-
-            const SizedBox(height: 10,),
-
-              //--------------- Password Text Field--------------------
-
-
               Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
-
                       decoration: BoxDecoration(
                           color: Colors.grey[200],
                           border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(20)
-                      ),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
 
+                          padding: EdgeInsets.symmetric(horizontal: 22.0),
+                          child: TextFormField(
+                              textAlignVertical: TextAlignVertical.center,
 
-                      child:  Padding(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Username or E-mail',
+                                icon: Icon(Icons.email),
+                              ),
+                              onSaved: (value) {
+                                _email = value!;
+                              },
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                              })))),
 
-                          padding:  EdgeInsets.symmetric(horizontal: 22.0),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'Password',
-
-                              suffixIcon: IconButton(
-                                icon: Icon(_secureText ? Icons.remove_red_eye: Icons.security),
-                                onPressed: (){
-                                  setState(() {
-                                    _secureText =! _secureText;
-                                  });
-                                },
-                              )
-                            ),
-                            obscureText: _secureText,
-                          )
-                      )
-                  )
+              const SizedBox(
+                height: 10,
               ),
 
-              const SizedBox(height: 20,),
+              //--------------- Password Text Field--------------------
+
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 22.0),
+                          child: TextFormField(
+
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Password',
+                                suffixIcon: IconButton(
+                                  icon: Icon(_secureText
+                                      ? Icons.remove_red_eye
+                                      : Icons.security),
+                                  onPressed: () {
+                                    setState(() {
+                                      _secureText = !_secureText;
+                                    });
+                                  },
+                                )),
+                            onSaved: (value) {
+                              _password = value!;
+                            },
+
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                            },
+                            obscureText: _secureText,
+
+                          )))),
+
+              const SizedBox(
+                height: 20,
+              ),
 
 //------------- Sign In Button -------------------
 
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 100.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: MaterialButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        _signIn();
+                      }
 
 
+                    },
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
 
-                 child: Container(
-                   padding: const EdgeInsets.all(10),
-                   decoration: BoxDecoration(color: Colors.deepPurple,
-                     borderRadius: BorderRadius.circular(12),
-
-
-                   ),
-                   child:  MaterialButton(
-                     onPressed: () {  },
-                     child: Text('Sign In',
-                       style: TextStyle(color: Colors.white,
-                         fontWeight: FontWeight.bold,
-                         fontSize: 18,
-                       ),
-                     ),
-                   ),
-                 ),
-               ),
-
-
-              const SizedBox(height: 20,),
-
-
+              const SizedBox(
+                height: 20,
+              ),
 
               TextButton(
-                onPressed: (){
-
-                },
+                onPressed: () {},
                 child: const Text(
                   'Forgot Password',
                   style: TextStyle(color: Colors.grey, fontSize: 15),
                 ),
               ),
 
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
 
               //-------------Don't have an account? ------------------
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:  [
+                children: [
                   const Text('Don\'t have an account?'),
-                  const SizedBox(width: 5,),
+                  const SizedBox(
+                    width: 5,
+                  ),
                   TextButton(
-                    onPressed: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => signIn()));
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => signIn()));
                     },
                     child: const Text(
                       'Sign Up',
                       style: TextStyle(color: Colors.blue, fontSize: 15),
                     ),
                   ),
-
                 ],
               )
-
-
             ],
           ),
-        )
-
-        )
-    );
+        )));
   }
 }
