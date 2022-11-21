@@ -29,17 +29,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  liquid_swipe: ^3.0.0
+  firebase_database:
+  liquid_swipe:
   firebase_auth:
   firebase_core:
   provider:
   cloud_firestore:
+  google_sign_in:
+  firebase:
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_fonts:
+  firebase_storage: ^11.0.6
 
 dev_dependencies:
   flutter_test:
