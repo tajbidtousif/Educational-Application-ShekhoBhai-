@@ -1,8 +1,8 @@
-import 'package:developer_side/teacherHomePage.dart';
+import 'package:developer_side/teacherdashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'signIn.dart';
-import 'teacherHomePage.dart';
+import 'signup.dart';
+import 'teacherdashboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
@@ -52,7 +52,7 @@ class _lonInState extends State<lonIn> {
           if (Data['role'] == 'Admin') {
             //print("dhuksi!");
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => teacherHomePage()));
+                MaterialPageRoute(builder: (context) => teacherdashboard()));
           } else if (Data['role'] as String == 'User') {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => studentHomePage()));
@@ -187,6 +187,7 @@ class _lonInState extends State<lonIn> {
                             _signIn();
                           }
                         },
+
                         child: Text(
                           'Sign In',
                           style: TextStyle(
@@ -229,7 +230,7 @@ class _lonInState extends State<lonIn> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => signIn()));
+                                  builder: (context) => signup()));
                         },
                         child: const Text(
                           'Sign Up',

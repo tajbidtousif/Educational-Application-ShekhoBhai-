@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'logIn.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'signIn.dart';
+import 'signup.dart';
 
 enum ProductTypeEnum { Student, Teacher }
 
@@ -130,36 +130,7 @@ class _welcomePageState extends State<welcomePage> {
                     ),
                   ],
                 ),
-                RadioListTile<ProductTypeEnum>(
-                    value: ProductTypeEnum.Student,
-                    groupValue: _productTypeEnum,
-                    title: Text(
-                        ProductTypeEnum.Student.name,
-                        style: TextStyle(
-                        fontSize: 20
-                    ),
-                    ),
-                    onChanged: (val){
-                      setState(() {
-                        _productTypeEnum = val;
-                      });
-                    }
-                ),
-                RadioListTile<ProductTypeEnum>(
-                    value: ProductTypeEnum.Teacher,
-                    groupValue: _productTypeEnum,
-                    title: Text(
-                        ProductTypeEnum.Teacher.name,
-                        style: TextStyle(
-                          fontSize: 20
-                        ),
-                    ),
-                    onChanged: (val){
-                      setState(() {
-                        _productTypeEnum = val;
-                      });
-                    }
-                ),
+
                 Row(
                   children: [
                     Expanded(
@@ -188,7 +159,7 @@ class _welcomePageState extends State<welcomePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => signIn()));
+                                    builder: (context) => signup()));
                           },
                           style: ElevatedButton.styleFrom(
                             side: const BorderSide(color: Colors.blueAccent),

@@ -3,17 +3,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'welcomePage.dart';
 import 'logIn.dart';
 
-class signIn extends StatefulWidget {
-  const signIn({super.key});
+class signup extends StatefulWidget {
+  const signup({super.key});
 
   @override
-  State<signIn> createState() => _signInState();
+  State<signup> createState() => _signupState();
 }
 
-class _signInState extends State<signIn> {
+
+
+class _signupState extends State<signup> {
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
                 backgroundColor: Colors.grey[300],
                appBar: AppBar(
@@ -228,6 +232,8 @@ class _signInState extends State<signIn> {
 
 
                    ),
+
+
                    child:  MaterialButton(
                      onPressed: () {},
                      child: Text('Sign Up',

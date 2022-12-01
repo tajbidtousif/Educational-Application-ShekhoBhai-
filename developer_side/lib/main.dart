@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'logIn.dart';
-import 'signIn.dart';
+import 'signup.dart';
 import 'welcomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'teacherHomePage.dart';
+import 'teacherdashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
