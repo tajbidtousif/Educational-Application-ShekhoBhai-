@@ -27,11 +27,12 @@ class _lonInState extends State<lonIn> {
 
   final dbRef = FirebaseDatabase.instance.ref().child("Users");
 
-  Future<void> _signIn()  async {
+  Future<void> _signIn() async {
     try {
       final newUser = await _auth.signInWithEmailAndPassword(
-          email: _email, password: _password);
+          email: _email, password: _password
 
+      );
       if (newUser != null) {
         final User? user = _auth.currentUser;
         final userID = user?.uid;
@@ -187,7 +188,6 @@ class _lonInState extends State<lonIn> {
                             _signIn();
                           }
                         },
-
                         child: Text(
                           'Sign In',
                           style: TextStyle(
