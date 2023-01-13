@@ -11,6 +11,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'studentHomePage.dart';
+import 'ForgetPasswordPage.dart';
 
 class lonIn extends StatefulWidget {
   const lonIn({Key? key}) : super(key: key);
@@ -30,9 +31,7 @@ class _lonInState extends State<lonIn> {
   Future<void> _signIn() async {
     try {
       final newUser = await _auth.signInWithEmailAndPassword(
-          email: _email, password: _password
-
-      );
+          email: _email, password: _password);
       if (newUser != null) {
         final User? user = _auth.currentUser;
         final userID = user?.uid;
@@ -167,6 +166,7 @@ class _lonInState extends State<lonIn> {
                                 obscureText: _secureText,
                               )))),
 
+
                   const SizedBox(
                     height: 20,
                   ),
@@ -205,7 +205,12 @@ class _lonInState extends State<lonIn> {
                   ),
 
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ForgetPasswordPage()));
+                    },
                     child: const Text(
                       'Forgot Password',
                       style: TextStyle(color: Colors.grey, fontSize: 15),

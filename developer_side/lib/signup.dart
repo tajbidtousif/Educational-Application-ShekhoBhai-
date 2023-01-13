@@ -30,6 +30,7 @@ class _signupState extends State<signup> {
   final _email = TextEditingController();
   final _password = TextEditingController();
   final _conpassword = TextEditingController();
+
   void _resetItem() {
     _name.clear();
     _email.clear();
