@@ -251,22 +251,45 @@ class teacherdashboardState extends State<teacherdashboard> {
           )),
       child: Column(children: [
         Row(
+
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                )),
+
             Row(
               children: [
-                CircleAvatar(
+                SizedBox(width: 2,),
+                CircleAvatar( radius: 50,
                   backgroundImage: NetworkImage(
                       "https://cdn4.iconfinder.com/data/icons/modern-education-2/128/71-512.png"),
                 ),
                 SizedBox(
                   width: 10.0,
                 ),
-                Text(
-                  "@Teacher_name",
-                  style: TextStyle(color: Colors.black),
+                Container(
+                  child: Column(
+                    children: const [
+                      Text(
+                        "Shah Tajbid Tousif",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w600),
+                      ),
+
+                    ],
+
+                  ),
+
                 ),
+
               ],
+
             ),
             IconButton(
                 onPressed: () {},
@@ -293,6 +316,8 @@ class teacherdashboardState extends State<teacherdashboard> {
             ),
           ),
         ),
+
+
       ]),
     );
   }
