@@ -41,15 +41,20 @@ class _navBarState extends State<navBar> {
                 accountName: Text("Shah Tajbid Tousif"), accountEmail: Text("tajbidtousif@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
-                  child: Image.network("https://www.w3schools.com/howto/img_avatar.png"),
+                  child: Image.network("https://www.w3schools.com/howto/img_avatar.png",
+                  width: 100,
+                    height:100
+                  ),
                 ),
-              )
+              ),
+
 
             ),
+            SizedBox(height: 15,),
 
             ListTile(
 
-              leading: Icon(Icons.home),
+              leading: Icon(Icons.home,color: Colors.blueAccent),
               title: Text('Home'),
               onTap: () {
                 Navigator.of(context)
@@ -60,14 +65,28 @@ class _navBarState extends State<navBar> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.message),
+              leading: Icon(Icons.message,
+              color: Colors.blueAccent),
               title: Text('Messages'),
               onTap: () {
 
               },
             ),
+
             ListTile(
-              leading: Icon(Icons.logout),
+
+              leading: Icon(Icons.settings,color: Colors.blueAccent),
+              title: Text('Settings'),
+              onTap: () {
+                // Navigator.of(context)
+                //     .push(MaterialPageRoute(builder: (_) {
+                //   return const teacherdashboard();
+                // }));
+
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout,color: Colors.blueAccent),
               title: Text('Log Out'),
               onTap: () {
                 Navigator.of(context)

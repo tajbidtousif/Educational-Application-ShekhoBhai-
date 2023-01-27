@@ -217,7 +217,7 @@ class _signupState extends State<signup> {
                           child: MaterialButton(
 
                             onPressed: () {
-                              print(txtrole);
+                             // print(txtrole);
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
                                 if(txtname.isNotEmpty && txtemail.isNotEmpty && txtpassword.isNotEmpty && txtrole.isNotEmpty)
