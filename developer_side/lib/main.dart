@@ -1,3 +1,4 @@
+import 'package:developer_side/navBar.dart';
 import 'package:flutter/material.dart';
 import 'logIn.dart';
 import 'signup.dart';
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: teacherdashboard(),
+      home: navBar(),
 
 
 

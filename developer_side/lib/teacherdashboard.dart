@@ -14,6 +14,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'studentHomePage.dart';
+import 'navBar.dart';
 
 
 class teacherdashboard extends StatefulWidget {
@@ -44,10 +45,7 @@ class teacherdashboardState extends State<teacherdashboard> {
                   /*view course*/
                   InkWell(
                     onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) {
-                        return const lonIn();
-                      }));
+
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -255,7 +253,13 @@ class teacherdashboardState extends State<teacherdashboard> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) {
+                    return const navBar();
+                  }));
+
+                },
                 icon: Icon(
                   Icons.menu,
                   color: Colors.white,
