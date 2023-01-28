@@ -267,8 +267,8 @@ class teacherdashboardState extends State<teacherdashboard> {
 
             Row(
               children: [
-                SizedBox(width: 2,),
-                CircleAvatar( radius: 50,
+                SizedBox(height: 50,),
+                CircleAvatar( radius: 30,
                   backgroundImage: NetworkImage(
                       "https://cdn4.iconfinder.com/data/icons/modern-education-2/128/71-512.png"),
                 ),
@@ -295,6 +295,7 @@ class teacherdashboardState extends State<teacherdashboard> {
               ],
 
             ),
+            SizedBox(height: 20,),
             IconButton(
                 onPressed: () {},
                 icon: Icon(
@@ -304,7 +305,7 @@ class teacherdashboardState extends State<teacherdashboard> {
           ],
         ),
         SizedBox(
-          height: 30.0,
+          height: 60,
         ),
 
         /*searchbar */
