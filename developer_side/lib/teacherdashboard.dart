@@ -1,3 +1,4 @@
+import 'package:developer_side/countingSession.dart';
 import 'package:developer_side/logIn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,6 +16,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'studentHomePage.dart';
 import 'navBar.dart';
+import 'countingSession.dart';
 
 
 class teacherdashboard extends StatefulWidget {
@@ -277,13 +279,9 @@ class teacherdashboardState extends State<teacherdashboard> {
                 ),
                 Container(
                   child: Column(
-                    children: const [
+                    children:  [
                       Text(
-                        "Shah Tajbid Tousif",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w600),
+                        countingSession().userId.toString(),
                       ),
 
                     ],

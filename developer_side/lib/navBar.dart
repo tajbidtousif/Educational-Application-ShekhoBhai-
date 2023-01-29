@@ -1,3 +1,5 @@
+import 'package:developer_side/countingSession.dart';
+import 'package:developer_side/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'welcomePage.dart';
@@ -54,6 +56,19 @@ class _navBarState extends State<navBar> {
 
             ListTile(
 
+              leading: Icon(Icons.account_circle,color: Colors.blueAccent),
+              title: Text('Profile'),
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) {
+                  return  ProfileScreen();
+                }));
+
+              },
+            ),
+
+            ListTile(
+
               leading: Icon(Icons.home,color: Colors.blueAccent),
               title: Text('Home'),
               onTap: () {
@@ -89,10 +104,12 @@ class _navBarState extends State<navBar> {
               leading: Icon(Icons.logout,color: Colors.blueAccent),
               title: Text('Log Out'),
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) {
-                  return const lonIn();
-                }));
+                FirebaseAuth auth = FirebaseAuth.instance;
+
+                auth.signOut().then((value){
+                  countingSession().userId = '';
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>lonIn()));
+                });
               },
             ),
           ],

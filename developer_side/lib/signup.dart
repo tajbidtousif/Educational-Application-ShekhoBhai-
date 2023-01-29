@@ -13,6 +13,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'studentHomePage.dart';
+import 'countingSession.dart';
 
 class signup extends StatefulWidget {
   const signup({super.key});
@@ -264,6 +265,7 @@ class _signupState extends State<signup> {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
         .then((value) {
+      countingSession().userId = value.user!.uid.toString();
       databaseRef.child("Users").child(value.user!.uid).set({
         'name': name,
         'email': email,

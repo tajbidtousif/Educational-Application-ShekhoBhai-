@@ -12,6 +12,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'studentHomePage.dart';
 import 'ForgetPasswordPage.dart';
+import 'countingSession.dart';
 
 class lonIn extends StatefulWidget {
   const lonIn({Key? key}) : super(key: key);
@@ -32,6 +33,9 @@ class _lonInState extends State<lonIn> {
     try {
       final newUser = await _auth.signInWithEmailAndPassword(
           email: _email, password: _password);
+      //     .then(value){
+      //   countingSession().userId = value.user!.uid.toString();
+      // };
       if (newUser != null) {
         final User? user = _auth.currentUser;
         final userID = user?.uid;
