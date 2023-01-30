@@ -269,7 +269,7 @@ class _signupState extends State<signup> {
       databaseRef.child("Users").child(value.user!.uid).set({
         'name': name,
         'email': email,
-        // 'password': password,
+        //'password': password,
         'role': role,
       });
       if (role == 'Admin') {

@@ -73,9 +73,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   }),
                             )),
                       ),
-                      ListTile(
-                        title: Text(map['name']),
-                      )
+                      SizedBox(height: 40,),
+                      ReusableRow(
+                        title: "Name",
+                        value: map['name'],
+                        iconData: Icons.person,
+                      ),
+                      ReusableRow(
+                        title: "Email",
+                        value: map['email'],
+                        iconData: Icons.email,
+                      ),
+                      ReusableRow(
+                        title: "Role",
+                        value: map['role'],
+                        iconData: Icons.rotate_left,
+                      ),
+
                     ],
                   );
                 } else {
@@ -88,6 +102,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
               }),
         ),
       ),
+    );
+  }
+}
+
+
+class ReusableRow extends StatelessWidget {
+  final String title, value;
+  final IconData iconData;
+  const ReusableRow({Key? key,required this.title, required this.iconData, required this.value}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children:[
+          ListTile(
+            title: Text(title),
+            leading:Icon(iconData),
+            trailing: Text(value),
+
+          )
+        ]
     );
   }
 }

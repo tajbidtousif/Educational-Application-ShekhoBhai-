@@ -33,9 +33,10 @@ class _lonInState extends State<lonIn> {
     try {
       final newUser = await _auth.signInWithEmailAndPassword(
           email: _email, password: _password);
-      //     .then(value){
+      //     .then((value){
       //   countingSession().userId = value.user!.uid.toString();
-      // };
+      // });
+      countingSession().userId = newUser.user!.uid.toString();
       if (newUser != null) {
         final User? user = _auth.currentUser;
         final userID = user?.uid;
