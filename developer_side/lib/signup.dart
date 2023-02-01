@@ -167,7 +167,7 @@ class _signupState extends State<signup> {
                       ),
                       value: txtrole.isNotEmpty ? txtrole : null,
 
-                      items: <String>['User', 'Admin']
+                      items: <String>['Student', 'Mentor']
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -269,10 +269,11 @@ class _signupState extends State<signup> {
       databaseRef.child("Users").child(value.user!.uid).set({
         'name': name,
         'email': email,
+        'image': '',
         //'password': password,
         'role': role,
       });
-      if (role == 'Admin') {
+      if (role == 'Mentor') {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => teacherdashboard()));
       } else {

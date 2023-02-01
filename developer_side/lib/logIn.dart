@@ -54,11 +54,11 @@ class _lonInState extends State<lonIn> {
           print(Data.length);
           print(Data['role']);
 
-          if (Data['role'] == 'Admin') {
+          if (Data['role'] == 'Mentor') {
             //print("dhuksi!");
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => teacherdashboard()));
-          } else if (Data['role'] as String == 'User') {
+          } else if (Data['role'] as String == 'Student') {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => studentHomePage()));
           }

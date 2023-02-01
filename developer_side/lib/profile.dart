@@ -23,7 +23,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   final ref = FirebaseDatabase.instance.ref().child('Users');
   @override
   Widget build(BuildContext context) {
@@ -46,34 +45,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      Center(
-                        child: Container(
-                            height: 130,
-                            width: 130,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(color: Colors.black, width: 3)),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Image(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      "https://www.w3schools.com/howto/img_avatar.png"),
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Center(
-                                        child: CircularProgressIndicator());
-                                  },
-                                  errorBuilder: (context, object, stack) {
-                                    return Container(
-                                        child: Icon(Icons.error_outline,
-                                            color: Colors.red));
-                                  }),
-                            )),
+                      Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            child: Center(
+                              child: Container(
+                                  height: 130,
+                                  width: 130,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border:
+                                      Border.all(color: Colors.black, width: 3)),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(50),
+                                    child: map['image'].toString()==" "?Icon(Icons.person,size: 35,): Image(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                          map["image"].toString(),
+                                        ),
+                                        loadingBuilder:
+                                            (context, child, loadingProgress) {
+                                          if (loadingProgress == null) return child;
+                                          return Center(
+                                              child: CircularProgressIndicator());
+                                        },
+                                        errorBuilder: (context, object, stack) {
+                                          return Container(
+                                              child: Icon(Icons.error_outline,
+                                                  color: Colors.red));
+                                        }),
+                                  )),
+                            ),
+                          ),
+
+                          CircleAvatar(
+                            backgroundColor: Colors.black,
+                            child: Icon(Icons.add,size: 19,color:Colors.white),
+                          )
+                        ],
                       ),
-                      SizedBox(height: 40,),
+                      SizedBox(
+                        height: 40,
+                      ),
                       ReusableRow(
                         title: "Name",
                         value: map['name'],
@@ -89,7 +104,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         value: map['role'],
                         iconData: Icons.rotate_left,
                       ),
-
                     ],
                   );
                 } else {
@@ -106,23 +120,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-
 class ReusableRow extends StatelessWidget {
   final String title, value;
   final IconData iconData;
-  const ReusableRow({Key? key,required this.title, required this.iconData, required this.value}) : super(key: key);
+  const ReusableRow(
+      {Key? key,
+      required this.title,
+      required this.iconData,
+      required this.value})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        children:[
-          ListTile(
-            title: Text(title),
-            leading:Icon(iconData),
-            trailing: Text(value),
-
-          )
-        ]
+      children: [
+        ListTile(
+          title: Text(title,style: Theme.of(context).textTheme.subtitle2,),
+          leading: Icon(iconData,),
+          trailing: Text(value,style: Theme.of(context).textTheme.subtitle2,),
+        ),
+        Divider(color: Colors.black.withOpacity(0.4))
+      ],
     );
   }
 }
