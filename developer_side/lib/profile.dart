@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:developer_side/ProfileController.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -65,7 +67,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             Border.all(color: Colors.black, width: 3)),
                                         child: ClipRRect(
                                           borderRadius: BorderRadius.circular(50),
-                                          child: map['image'].toString()==" "?Icon(Icons.person,size: 35,): Image(
+                                          child: provider.image == null ? map['image'].toString()==""?const Icon(Icons.person,size: 35,):
+                                          Image(
                                               fit: BoxFit.cover,
                                               image: NetworkImage(
                                                 map["image"].toString(),
@@ -80,8 +83,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 return Container(
                                                     child: Icon(Icons.error_outline,
                                                         color: Colors.red));
-                                              }),
-                                        )),
+                                              }):
+                                              Image.file(
+                                                File(provider.image!.path).absolute
+                                              )
+                                        )
+                                    ),
                                   ),
                                 ),
                                 InkWell(

@@ -1,29 +1,41 @@
 
+import 'dart:io';
+
+import 'package:developer_side/countingSession.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:liquid_swipe/Helpers/Helpers.dart';
+
 
 class ProfileController with ChangeNotifier{
+  DatabaseReference ref = FirebaseDatabase.instance.ref().child('Users');
+  firebase_storage.FirebaseStorage storage = firebase_storage.FirebaseStorage.instance;
   final picker = ImagePicker();
 
   XFile? _image;
-  XFile get image => _image!;
+  XFile? get image => _image ;
 
-  Future pickGalleryImage(BuildContext context)async
-  {
+  Future pickGalleryImage(BuildContext context)async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery,imageQuality: 100);
     if(pickedFile!=null)
       {
         _image = XFile(pickedFile.path);
+        notifyListeners();
+        uploadImage(context);
       }
   }
 
-  Future pickCameraImage(BuildContext context)async
-  {
+
+  Future pickCameraImage(BuildContext context)async {
     final pickedFile = await picker.pickImage(source: ImageSource.camera,imageQuality: 100);
     if(pickedFile!=null)
     {
       _image = XFile(pickedFile.path);
+      uploadImage(context);
+      notifyListeners();
     }
   }
 
@@ -67,5 +79,32 @@ class ProfileController with ChangeNotifier{
           );
         }
     );
+  }
+
+  void uploadImage(BuildContext context)async
+  {
+    firebase_storage.Reference storageRef = firebase_storage.FirebaseStorage.instance.ref('/profileImage'+countingSession().userId.toString());
+    firebase_storage.UploadTask upLoadTask = storageRef.putFile(File(image!.path).absolute);
+    await Future.value(upLoadTask);
+    final newUrl = await storageRef.getDownloadURL();
+    ref.child(countingSession().userId.toString()).update({
+      'image': newUrl.toString()
+    }).then((value){
+      showDialog(context: context, builder: (context){
+        return AlertDialog(
+          content: Text("Image Uploaded",),
+
+        );
+        _image = null;
+      });
+
+    }).onError((error, stackTrace){
+          showDialog(context: context, builder: (context){
+            return AlertDialog(
+              content: Text("Error"),
+            );
+          });
+        });
+
   }
 }
