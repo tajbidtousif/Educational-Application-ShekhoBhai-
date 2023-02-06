@@ -1,5 +1,6 @@
 import 'package:developer_side/navBar.dart';
 import 'package:flutter/material.dart';
+import 'StudentDashboard.dart';
 import 'logIn.dart';
 import 'signup.dart';
 import 'welcomePage.dart';
@@ -24,7 +25,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(

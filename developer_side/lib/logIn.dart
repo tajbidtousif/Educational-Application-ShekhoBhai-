@@ -1,3 +1,4 @@
+import 'package:developer_side/StudentDashboard.dart';
 import 'package:developer_side/teacherdashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'studentHomePage.dart';
+
 import 'ForgetPasswordPage.dart';
 import 'countingSession.dart';
 
@@ -57,10 +58,10 @@ class _lonInState extends State<lonIn> {
           if (Data['role'] == 'Mentor') {
             //print("dhuksi!");
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => teacherdashboard()));
+                MaterialPageRoute(builder: (context) => const teacherdashboard()));
           } else if (Data['role'] as String == 'Student') {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => studentHomePage()));
+                MaterialPageRoute(builder: (context) => const StudentDashboard()));
           }
         });
       } else {
@@ -118,7 +119,7 @@ class _lonInState extends State<lonIn> {
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'Username or E-mail',
+                                    hintText: 'E-mail',
                                     icon: Icon(Icons.email),
                                   ),
                                   onSaved: (value) {

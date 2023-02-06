@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'StudentDashboard.dart';
 import 'welcomePage.dart';
 import 'logIn.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +14,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'studentHomePage.dart';
 import 'countingSession.dart';
 
 class signup extends StatefulWidget {
@@ -274,11 +275,29 @@ class _signupState extends State<signup> {
         'role': role,
       });
       if (role == 'Mentor') {
+        Fluttertoast.showToast(
+            msg: "Account Created Successfully",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.grey[500],
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => teacherdashboard()));
       } else {
+        Fluttertoast.showToast(
+            msg: "Account Created Successfully",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.grey[500],
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => studentHomePage()));
+            context, MaterialPageRoute(builder: (context) => StudentDashboard()));
       }
     });
 

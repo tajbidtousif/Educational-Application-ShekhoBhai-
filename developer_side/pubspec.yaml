@@ -38,6 +38,9 @@ dependencies:
   google_sign_in:
   firebase:
   image_picker:
+  fluttertoast:
+  better_player:
+  video_player:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -74,6 +77,12 @@ flutter:
      - assets/asAStudent.png
      - assets/asATeacher.png
      - assets/profilecover.jpeg
+     - assets/guideline.png
+     - assets/findcourse.png
+     - assets/messageicon.png
+     - assets/posticon.png
+     - assets/bootcampnews.png
+     - assets/addcourse.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

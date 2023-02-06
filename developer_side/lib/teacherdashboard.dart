@@ -14,7 +14,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'studentHomePage.dart';
 import 'navBar.dart';
 import 'countingSession.dart';
 
@@ -29,299 +28,289 @@ class teacherdashboard extends StatefulWidget {
 class teacherdashboardState extends State<teacherdashboard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[350],
-      body: ListView(
-        children: [
-          appbar(),
-          SizedBox(height: 10.0),
-          Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 5,
-                mainAxisSpacing: 5,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                children: [
-                  /*view course*/
-                  InkWell(
-                    onTap: () {
-
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                          ),
-                          boxShadow: [
-                            BoxShadow(color: Colors.grey, blurRadius: 5)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(children: [
-                          Image.asset(
-                            "assets/asATeacher.png",
-                            width: 200,
-                            height: 150,
-                          ),
-                          Text(
-                            'Add New Course',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
-                          ),
-                        ]),
-                      ),
-                    ),
-                  ),
-
-                  /*view course*/
-
-                  InkWell(
-                    /*onTap: () {
-                                 Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                                  return const ScheduleScreen();
-
-                                 }));
-                               },*/
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                          ),
-                          boxShadow: [
-                            BoxShadow(color: Colors.grey, blurRadius: 5)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(children: [
-                          Image.asset(
-                            "assets/asATeacher.png",
-                            width: 200,
-                            height: 150,
-                          ),
-                          Text(
-                            'View Course',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
-                          ),
-                        ]),
-                      ),
-                    ),
-                  ),
-
-                  /*Interactive Session*/
-
-                  InkWell(
-                    /*onTap: () {
-                                 Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                                  return const ScheduleScreen();
-
-                                 }));
-                               },*/
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                          ),
-                          boxShadow: [
-                            BoxShadow(color: Colors.grey, blurRadius: 5)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(children: [
-                          Image.asset(
-                            "assets/asATeacher.png",
-                            width: 200,
-                            height: 150,
-                          ),
-                          Text(
-                            'Interactive Session',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
-                          ),
-                        ]),
-                      ),
-                    ),
-                  ),
-
-                  /*Add COurse*/
-                  InkWell(
-                    /*onTap: () {
-                                 Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                                  return const ScheduleScreen();
-
-                                 }));
-                               },*/
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                          ),
-                          boxShadow: [
-                            BoxShadow(color: Colors.grey, blurRadius: 5)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(children: [
-                          Image.asset(
-                            "assets/asATeacher.png",
-                            width: 200,
-                            height: 150,
-                          ),
-                          Text(
-                            'Live Session',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
-                          ),
-                        ]),
-                      ),
-                    ),
-                  ),
-
-                  InkWell(
-                    /*onTap: () {
-                                 Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                                  return const ScheduleScreen();
-
-                                 }));
-                               },*/
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                          ),
-                          boxShadow: [
-                            BoxShadow(color: Colors.grey, blurRadius: 5)
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(children: [
-                          Image.asset(
-                            "assets/asATeacher.png",
-                            width: 200,
-                            height: 150,
-                          ),
-                          Text(
-                            'Create Bootcamp',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
-                          ),
-                        ]),
-                      ),
-                    ),
-                  ),
-
-                ],
-              ))
-        ],
-      ),
-    );
-  }
-
-  /*Appbar Constructor*/
-  appbar() {
-    return Container(
-      padding: EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-          color: Colors.blue[300],
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30.0),
-            bottomRight: Radius.circular(30.0),
-          )),
-      child: Column(children: [
-        Row(
-
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) {
-                    return const navBar();
-                  }));
-
-                },
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.white,
-                )),
-
-            Row(
-              children: [
-                SizedBox(height: 50,),
-                CircleAvatar( radius: 30,
-                  backgroundImage: NetworkImage(
-                      "https://cdn4.iconfinder.com/data/icons/modern-education-2/128/71-512.png"),
+    var size = MediaQuery.of(context).size;
+    return  Scaffold(
+        body: Stack(
+          children: <Widget>[
+            Container(
+              height: size.height * .30,
+              decoration: BoxDecoration(
+                color: Colors.blue[100],
+                image: DecorationImage(
+                  alignment: Alignment.centerLeft,
+                  image: AssetImage(""),
+                  // image:
                 ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Container(
-                  child: Column(
-                    children:  [
-                      Text(
-                        countingSession().userId.toString(),
-                      ),
-
-                    ],
-
-                  ),
-
-                ),
-
-              ],
-
+              ),
             ),
-            SizedBox(height: 20,),
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.notifications,
-                  color: Colors.white,
-                )),
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 52,
+                        width: 52,
+                        decoration: BoxDecoration(
+                          color: Colors.blue[200],
+                          shape: BoxShape.circle,
+                        ),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.menu,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => navBar()),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text("Hello, Teacher",
+                        style: GoogleFonts.montserrat(
+                            fontSize: 30, fontWeight: FontWeight.w900)),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Search",
+                          fillColor: Colors.white,
+                          filled: true,
+                          suffixIcon: Icon(Icons.filter_list),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: BorderSide(color: Colors.transparent),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GridView.count(
+                          crossAxisCount: 2,
+                          childAspectRatio: .85,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                          children: <Widget>[
+
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => teacherdashboard()),
+                                );
+
+                              },
+                              child: Container(
+
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(13),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 17),
+                                      blurRadius: 23,
+                                      spreadRadius: -13,
+                                      //color: Colors.blue[100],
+                                    ),
+                                  ],
+                                ),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 10),
+                                  Image.asset(
+                                    "assets/addcourse.png",
+                                    width: 200,
+                                    height: 140,
+                                  ),
+                                  Text(
+                                    'Add Course',
+                                    style: TextStyle(
+                                        fontSize: 18, fontWeight: FontWeight.w600),
+                                  ),
+                                ]),
+                              ),
+                            ),
+
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => teacherdashboard()),
+                                );
+
+                              },
+                              child: Container(
+
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(13),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 17),
+                                      blurRadius: 23,
+                                      spreadRadius: -13,
+                                    ),
+                                  ],
+                                ),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 10),
+                                  Image.asset(
+                                    "assets/findcourse.png",
+                                    width: 200,
+                                    height: 140,
+                                  ),
+                                  Text(
+                                    'View-Course',
+                                    style: TextStyle(
+                                        fontSize: 18, fontWeight: FontWeight.w600),
+                                  ),
+                                ]),
+                              ),
+                            ),
+
+
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => teacherdashboard()),
+                                );
+
+                              },
+                              child: Container(
+
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(13),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 17),
+                                      blurRadius: 23,
+                                      spreadRadius: -13,
+                                    ),
+                                  ],
+                                ),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 10),
+                                  Image.asset(
+                                    "assets/messageicon.png",
+                                    width: 200,
+                                    height: 140,
+                                  ),
+                                  Text(
+                                    'Interactive Session',
+                                    style: TextStyle(
+                                        fontSize: 18, fontWeight: FontWeight.w600),
+                                  ),
+                                ]),
+                              ),
+                            ),
+
+
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => teacherdashboard()),
+                                );
+
+                              },
+                              child: Container(
+
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(13),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 17),
+                                      blurRadius: 23,
+                                      spreadRadius: -13,
+                                    ),
+                                  ],
+                                ),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 12),
+                                  Image.asset(
+                                    "assets/posticon.png",
+                                    width: 200,
+                                    height: 130,
+                                  ),
+                                  Text(
+                                    'Post-Query',
+                                    style: TextStyle(
+                                        fontSize: 18, fontWeight: FontWeight.w600),
+                                  ),
+                                ]),
+                              ),
+                            ),
+
+
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => teacherdashboard()),
+                                );
+
+                              },
+                              child: Container(
+
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(13),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 17),
+                                      blurRadius: 23,
+                                      spreadRadius: -13,
+                                    ),
+                                  ],
+                                ),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 10),
+                                  Image.asset(
+                                    "assets/bootcampnews.png",
+                                    width: 200,
+                                    height: 140,
+                                  ),
+                                  Text(
+                                    'Create Boot Camp',
+                                    style: TextStyle(
+                                        fontSize: 18, fontWeight: FontWeight.w600),
+                                  ),
+                                ]),
+                              ),
+                            ),
+
+
+
+                          ]),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
-        ),
-        SizedBox(
-          height: 60,
-        ),
-
-        /*searchbar */
-        TextField(
-          decoration: InputDecoration(
-            hintText: "Search",
-            fillColor: Colors.white,
-            filled: true,
-            suffixIcon: Icon(Icons.filter_list),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: BorderSide(color: Colors.transparent),
-            ),
-          ),
-        ),
-
-
-      ]),
+        )
     );
   }
 }

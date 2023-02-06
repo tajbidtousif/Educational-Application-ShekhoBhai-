@@ -14,7 +14,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'studentHomePage.dart';
 import 'navBar.dart';
 
 
@@ -67,18 +66,7 @@ class _navBarState extends State<navBar> {
               },
             ),
 
-            ListTile(
 
-              leading: Icon(Icons.home,color: Colors.blueAccent),
-              title: Text('Home'),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) {
-                  return const teacherdashboard();
-                }));
-
-              },
-            ),
             ListTile(
               leading: Icon(Icons.message,
               color: Colors.blueAccent),

@@ -8,6 +8,8 @@ import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:liquid_swipe/Helpers/Helpers.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 
 class ProfileController with ChangeNotifier{
@@ -90,20 +92,26 @@ class ProfileController with ChangeNotifier{
     ref.child(countingSession().userId.toString()).update({
       'image': newUrl.toString()
     }).then((value){
-      showDialog(context: context, builder: (context){
-        return AlertDialog(
-          content: Text("Image Uploaded",),
-
-        );
-        _image = null;
-      });
+      Fluttertoast.showToast(
+          msg: "Image Uploaded",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey[500],
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
 
     }).onError((error, stackTrace){
-          showDialog(context: context, builder: (context){
-            return AlertDialog(
-              content: Text("Error"),
-            );
-          });
+      Fluttertoast.showToast(
+          msg: "Something went wrong,Try again later!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey[500],
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
         });
 
   }
