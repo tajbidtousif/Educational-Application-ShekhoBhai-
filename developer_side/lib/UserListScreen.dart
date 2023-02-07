@@ -62,6 +62,10 @@ class _UserListScreenState extends State<UserListScreen> {
               return Card(
                 child: ListTile(
                   onTap: (){
+                    // print(snapshot.child("name").value.toString());
+                    // print(snapshot.child("image").value.toString());
+                    // print(snapshot.child("email").value.toString());
+                    // print(snapshot.child("uid").value.toString());
                    PersistentNavBarNavigator.pushNewScreen(context,
                        screen: MessageScreen(
                          name:snapshot.child("name").value.toString(),

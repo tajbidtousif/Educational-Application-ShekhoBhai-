@@ -271,6 +271,7 @@ class _signupState extends State<signup> {
         'name': name,
         'email': email,
         'image': '',
+        'uid': value.user!.uid,
         //'password': password,
         'role': role,
       });

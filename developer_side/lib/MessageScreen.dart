@@ -54,8 +54,7 @@ class _MessageScreenState extends State<MessageScreen> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: Column(
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -64,56 +63,55 @@ class _MessageScreenState extends State<MessageScreen> {
                     itemCount: 100,
                     itemBuilder: (context, index) {
                       return Text(index.toString());
-                    })),
+                    })
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 children: [
-                  Expanded(child:
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:20),
-                      child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              border: Border.all(color: Colors.white),
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 30.0),
-                              child: TextFormField(
-                                controller: messageController,
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: 'Type Message',
-                                    icon: Icon(Icons.message),
-                                    suffixIcon: InkWell(
-                                      onTap: () {
-                                        sendMessage();
-                                      },
-                                      child: Padding(
-                                        padding:  EdgeInsets.only(right: 1),
-                                        child: CircleAvatar(
-                                          backgroundColor: Colors.blueAccent,
-                                          child: Icon(Icons.send, color: Colors.white,),
-                                        ),
-                                      ),
-                                    ),
-                                    ),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter some text';
-                                  }
-                                },
-                              )))),
+                  Expanded(
+                    child: TextFormField(
+                      controller: messageController,
+                      cursorColor: Colors.black,
+                      style: Theme.of(context).textTheme.bodyText2?.copyWith(height: 0,fontSize: 19),
+                      decoration: InputDecoration(
+                        hintText: "Type a message",
+                        contentPadding: const EdgeInsets.all(20),
+                        suffixIcon: IconButton(
+                          icon: Icon(Icons.send),
+                          onPressed: () {
+                            sendMessage();
+                          },
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
 
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                        errorBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
 
+                      ),
+                    ),
                   ),
+
 
                 ],
               ),
             ),
           ],
         ),
-      ),
+
     );
   }
 
@@ -135,7 +133,7 @@ class _MessageScreenState extends State<MessageScreen> {
         'isSeen' : false,
         'message' : messageController.text.toString(),
         'sender' : countingSession().userId.toString(),
-        'receiver' : widget.receiverId ,
+        'receiver' : widget.receiverId.toString(),
         'type' : 'text',
         'time' : time.toString()
       }).then((value){
