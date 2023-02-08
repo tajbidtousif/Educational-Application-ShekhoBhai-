@@ -84,6 +84,7 @@ flutter:
      - assets/posticon.png
      - assets/bootcampnews.png
      - assets/addcourse.png
+     - assets/logo.png.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

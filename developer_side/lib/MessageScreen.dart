@@ -59,12 +59,64 @@ class _MessageScreenState extends State<MessageScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-                child: ListView.builder(
-                    itemCount: 100,
-                    itemBuilder: (context, index) {
-                      return Text(index.toString());
-                    })
-            ),
+                child: StreamBuilder(
+                  stream: ref.onValue,
+                  builder: (context,snapshot) {
+
+                      final values = snapshot.data as DatabaseEvent;
+                      final data = values.snapshot.value as Map;
+                      final List<Map<dynamic, dynamic>> messages = [];
+                      print("Tousif Abid");
+                      print(data);
+                      data.forEach((key, value) {
+                        final message = value as Map;
+                        print(message);
+                        final messageWidget = Text(message['message']);
+                        messages.add(message);
+                      });
+                      messages.sort((a, b) => a['time'].compareTo(b['time']));
+                      return ListView.builder(
+                        itemBuilder: (context, index) {
+                          final message = messages[index];
+                          final isMe = message['sender'] == FirebaseAuth.instance.currentUser!.uid;
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  message['sender'],
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                Material(
+                                  elevation: 5,
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: isMe ? Colors.blue : Colors.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                                    child: Text(
+                                      message['message'],
+                                      style: TextStyle(
+                                        color: isMe ? Colors.white : Colors.black,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        itemCount: messages.length,
+                      );
+
+
+                  }),
+                ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
@@ -100,12 +152,9 @@ class _MessageScreenState extends State<MessageScreen> {
                           borderSide: BorderSide(color: Colors.black),
                           borderRadius: BorderRadius.all(Radius.circular(50)),
                         ),
-
                       ),
                     ),
                   ),
-
-
                 ],
               ),
             ),

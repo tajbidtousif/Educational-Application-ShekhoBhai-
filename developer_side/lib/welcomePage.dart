@@ -108,7 +108,7 @@ class _welcomePageState extends State<welcomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image(
-                  image: AssetImage('assets/welcomeimage.jpg'),
+                  image: AssetImage('assets/logo.png.png'),
                   height: height * 0.3,
                 ),
                 Column(
