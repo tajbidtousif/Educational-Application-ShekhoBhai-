@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:developer_side/countingSession.dart';
@@ -29,7 +28,6 @@ class ProfileController with ChangeNotifier{
         uploadImage(context);
       }
   }
-
 
   Future pickCameraImage(BuildContext context)async {
     final pickedFile = await picker.pickImage(source: ImageSource.camera,imageQuality: 100);
