@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Add_post extends StatefulWidget {
   const Add_post({Key? key}) : super(key: key);
@@ -11,9 +12,32 @@ class Add_post extends StatefulWidget {
 
 class _Add_postState extends State<Add_post> {
   File? _image ;
+  final picker = ImagePicker();
 
   TextEditingController titleController = TextEditingController();
   TextEditingController descriotionController = TextEditingController();
+
+  Future getImageGallery()async{
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if(pickedFile != null) {
+        _image = File(pickedFile.path);
+      }else{
+        print('No image selected');
+      }
+    });
+  }
+
+  Future getCameraImage()async{
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      if(pickedFile != null) {
+        _image = File(pickedFile.path);
+      }else{
+        print('No image selected');
+      }
+    });
+  }
 
   void dialog(context){
     showDialog(
@@ -29,7 +53,8 @@ class _Add_postState extends State<Add_post> {
                 children:[
                   InkWell(
                     onTap: (){
-
+                    getCameraImage();
+                    Navigator.pop(context);
                     },
                     child: ListTile(
                       leading: Icon(Icons.camera_alt),
@@ -38,7 +63,8 @@ class _Add_postState extends State<Add_post> {
                   ),
                   InkWell(
                     onTap: (){
-
+                      getImageGallery();
+                      Navigator.pop(context); 
                     },
                     child: ListTile(
                       leading: Icon(Icons.photo_library),
@@ -84,7 +110,7 @@ class _Add_postState extends State<Add_post> {
             _image!.absolute,
             width: 100,
             height: 100,
-            fit: BoxFit.fitHeight,
+            fit: BoxFit.fill,
 
     ),
     ):
