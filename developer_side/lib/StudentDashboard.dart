@@ -1,9 +1,13 @@
+import 'package:developer_side/Add_bootcamp_news.dart';
+import 'package:developer_side/Bootcamp_Screen_for_Teacher.dart';
+import 'package:developer_side/MessageScreen.dart';
 import 'package:developer_side/countingSession.dart';
 import 'package:developer_side/logIn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Add_post.dart';
 import 'Blog_screen.dart';
+import 'UserListScreen.dart';
 import 'welcomePage.dart';
 import 'logIn.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,6 +22,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'navBar.dart';
 import 'countingSession.dart';
+import 'Bootcamp_Screen_for_Student.dart';
+import 'Bootcamp_Screen_for_Teacher.dart';
 
 class StudentDashboard extends StatefulWidget {
   const StudentDashboard({super.key});
@@ -187,7 +193,7 @@ class StudentDashboardState extends State<StudentDashboard> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => teacherdashboard()),
+                              MaterialPageRoute(builder: (context) => UserListScreen()),
                             );
 
                           },
@@ -267,7 +273,7 @@ class StudentDashboardState extends State<StudentDashboard> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => teacherdashboard()),
+                              MaterialPageRoute(builder: (context) => Bootcamp_Screen_for_Student()),
                             );
 
                           },

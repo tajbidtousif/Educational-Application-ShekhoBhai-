@@ -1,7 +1,10 @@
+import 'package:developer_side/Blog_screen.dart';
 import 'package:developer_side/countingSession.dart';
 import 'package:developer_side/logIn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Bootcamp_Screen_for_Student.dart';
+import 'Bootcamp_Screen_for_Teacher.dart';
 import 'welcomePage.dart';
 import 'logIn.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -227,7 +230,7 @@ class teacherdashboardState extends State<teacherdashboard> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => teacherdashboard()),
+                                  MaterialPageRoute(builder: (context) => Blog_screen()),
                                 );
 
                               },
@@ -253,7 +256,7 @@ class teacherdashboardState extends State<teacherdashboard> {
                                     height: 130,
                                   ),
                                   Text(
-                                    'Post-Query',
+                                    'Carrier Experience',
                                     style: TextStyle(
                                         fontSize: 18, fontWeight: FontWeight.w600),
                                   ),
@@ -267,7 +270,7 @@ class teacherdashboardState extends State<teacherdashboard> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => teacherdashboard()),
+                                  MaterialPageRoute(builder: (context) => Bootcamp_Screen_for_Teacher()),
                                 );
 
                               },
