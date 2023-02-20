@@ -253,7 +253,7 @@ class StudentDashboardState extends State<StudentDashboard> {
                                 height: 130,
                               ),
                               Text(
-                                'Post-Query',
+                                'Carrier Experience',
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w600),
                               ),

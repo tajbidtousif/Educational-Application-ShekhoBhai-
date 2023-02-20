@@ -41,7 +41,7 @@ class _navBarState extends State<navBar> {
                      fit: BoxFit.cover
                    )
                   ),
-                  accountName: Text("Shah Tajbid Tousif"), accountEmail: Text("tajbidtousif@gmail.com"),
+                  accountName: Text("S.T.Tousif"), accountEmail: Text("sttousif@gmail.com"),
                 currentAccountPicture: CircleAvatar(
                   child: ClipOval(
                     child: Image.network("https://www.w3schools.com/howto/img_avatar.png",
