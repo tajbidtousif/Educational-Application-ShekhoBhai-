@@ -216,6 +216,7 @@ class _Add_bootcamp_newsState extends State<Add_bootcamp_news> {
                         "UEmail": user!.email.toString(),
                         "uId": user.uid.toString(),
                         "uName": user.displayName.toString(),
+                        "uImage": user.photoURL.toString(),
 
 
                       }).then((value){

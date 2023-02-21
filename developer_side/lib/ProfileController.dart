@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:developer_side/countingSession.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -90,6 +91,7 @@ class ProfileController with ChangeNotifier{
     ref.child(countingSession().userId.toString()).update({
       'image': newUrl.toString()
     }).then((value){
+      FirebaseAuth.instance.currentUser!.updatePhotoURL(newUrl.toString());
       Fluttertoast.showToast(
           msg: "Image Uploaded",
           toastLength: Toast.LENGTH_SHORT,

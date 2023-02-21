@@ -275,6 +275,7 @@ class _signupState extends State<signup> {
         //'password': password,
         'role': role,
       });
+      FirebaseAuth.instance.currentUser?.updateDisplayName(name);
       if (role == 'Mentor') {
         Fluttertoast.showToast(
             msg: "Account Created Successfully",

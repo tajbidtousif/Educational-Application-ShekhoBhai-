@@ -104,6 +104,30 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+
+                        Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              child: ClipOval(
+                                child: Image.network(
+                                    FirebaseAuth.instance.currentUser?.photoURL?? "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png",
+                                    width: 50,
+                                    height:50
+
+                                ),
+                              ),
+
+                            ),
+                            Text(bb['uName'], style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+
+
+                          ],
+                        ),
+                      ),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: FadeInImage.assetNetwork(
@@ -116,6 +140,7 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
                               ),
                             ),
                             SizedBox(height: 10,),
+
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(bb['pTitle'], style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),

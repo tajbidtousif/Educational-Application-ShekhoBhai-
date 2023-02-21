@@ -41,10 +41,10 @@ class _navBarState extends State<navBar> {
                      fit: BoxFit.cover
                    )
                   ),
-                  accountName: Text("S.T.Tousif"), accountEmail: Text("sttousif@gmail.com"),
+                  accountName: Text(FirebaseAuth.instance.currentUser?.displayName?? "UserName"), accountEmail: Text(""),
                 currentAccountPicture: CircleAvatar(
                   child: ClipOval(
-                    child: Image.network("https://www.w3schools.com/howto/img_avatar.png",
+                    child: Image.network(FirebaseAuth.instance.currentUser?.photoURL?? "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png",
                     width: 100,
                       height:100
                     ),
