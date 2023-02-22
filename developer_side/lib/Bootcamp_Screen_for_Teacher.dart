@@ -52,13 +52,12 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
         ),
         actions: [
           InkWell(
-              onTap: (){
-
-                Navigator.push(context,MaterialPageRoute(
-                    builder: (context)=> Add_bootcamp_news())) ;
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => Add_bootcamp_news()));
               },
-              child: Icon(Icons.add,color: Colors.black)),
-          SizedBox(width:20),
+              child: Icon(Icons.add, color: Colors.black)),
+          SizedBox(width: 20),
 
         ],
       ),
@@ -78,7 +77,7 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
                   prefixIcon: Icon(Icons.search),
                   border: OutlineInputBorder()
               ),
-              onChanged: (String value){
+              onChanged: (String value) {
                 search = value;
               },
 
@@ -86,12 +85,12 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
             Expanded(
               child: FirebaseAnimatedList(
                 query: dbRef.child("Boot Camp News List"),
-                itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double>animation,int index){
+                itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                    Animation<double>animation, int index) {
                   dynamic bb = snapshot.value;
                   String tempTitle = bb['pTitle'];
 
-                  if(searchController.text.isEmpty)
-                  {
+                  if (searchController.text.isEmpty) {
                     return Padding(
                       padding: const EdgeInsets.all(10),
                       child: Container(
@@ -104,35 +103,55 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
 
-                        Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: ClipOval(
-                                child: Image.network(
-                                    FirebaseAuth.instance.currentUser?.photoURL?? "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png",
-                                    width: 50,
-                                    height:50
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: FutureBuilder(
+                                        future: getPosterImage(bb['uId']),
+                                      builder: (context, snapshot) {
+                                        if(snapshot.hasData){
+                                          return CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: NetworkImage(snapshot.data.toString()),
+                                          );
+                                        }
+                                        else{
+                                          return CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: NetworkImage("https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"),
+                                          );
+                                        }
+                                      }
+                                    ),
 
-                                ),
+                                  ),
+                                  Text(bb['uName'], style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),),
+
+
+                                ],
                               ),
-
                             ),
-                            Text(bb['uName'], style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-
-
-                          ],
-                        ),
-                      ),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: FadeInImage.assetNetwork(
                                 fit: BoxFit.cover,
-                                width: MediaQuery.of(context).size.width * 1,
-                                height: MediaQuery.of(context).size.height * .25,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width * 1,
+                                height: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .height * .25,
                                 placeholder: "assets/logo.png.png",
                                 image: bb['pImage'],
                                 //image: snapshot.value!.["pImage"] ?? "default url",
@@ -141,20 +160,25 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
                             SizedBox(height: 10,),
 
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: Text(bb['pTitle'], style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10),
+                              child: Text(bb['pTitle'], style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: Text(bb['pDescription'], style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10),
+                              child: Text(bb['pDescription'], style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal),),
                             ),
                           ],
                         ),
                       ),
                     );
                   }
-                  else if(tempTitle.toLowerCase().contains(searchController.text.toString()))
-                  {
+                  else if (tempTitle.toLowerCase().contains(
+                      searchController.text.toString())) {
                     return Padding(
                       padding: const EdgeInsets.all(10),
                       child: Container(
@@ -170,8 +194,14 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
                               borderRadius: BorderRadius.circular(10),
                               child: FadeInImage.assetNetwork(
                                 fit: BoxFit.cover,
-                                width: MediaQuery.of(context).size.width * 1,
-                                height: MediaQuery.of(context).size.height * .25,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width * 1,
+                                height: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .height * .25,
                                 placeholder: "assets/logo.png.png",
                                 image: bb['pImage'],
                                 //image: snapshot.value!.["pImage"] ?? "default url",
@@ -179,23 +209,26 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
                             ),
                             SizedBox(height: 10,),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: Text(bb['pTitle'], style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10),
+                              child: Text(bb['pTitle'], style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: Text(bb['pDescription'], style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10),
+                              child: Text(bb['pDescription'], style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal),),
                             ),
                           ],
                         ),
                       ),
                     );
                   }
-                  else{
+                  else {
                     return Container();
                   }
-
-
                 },
               ),
             )
@@ -205,5 +238,12 @@ class _Bootcamp_Screen_for_TeacherState extends State<Bootcamp_Screen_for_Teache
 
     );
   }
+
+  Future<String> getPosterImage(String uId) async {
+    final gg = await FirebaseDatabase.instance.ref().child("Users").child(uId).child(
+        "image").once();
+    return gg.snapshot.value.toString();
+  }
+
 }
 

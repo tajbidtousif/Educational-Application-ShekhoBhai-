@@ -66,7 +66,7 @@ class _MessageScreenState extends State<MessageScreen> {
                       final values = snapshot.data as DatabaseEvent;
                       final data = values.snapshot.value as Map;
                       final List<Map<dynamic, dynamic>> messages = [];
-                      print("Tousif Abid");
+                      print("");
                       print(data);
                       data.forEach((key, value) {
                         final message = value as Map;
