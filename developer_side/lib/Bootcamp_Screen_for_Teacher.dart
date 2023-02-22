@@ -15,7 +15,6 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'teacherdashboard.dart';
-
 import 'Add_post.dart';
 
 class Bootcamp_Screen_for_Teacher extends StatefulWidget {
