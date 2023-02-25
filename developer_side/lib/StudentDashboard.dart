@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Add_post.dart';
 import 'Blog_screen.dart';
+import 'Guideline_dashboard.dart';
 import 'UserListScreen.dart';
 import 'welcomePage.dart';
 import 'logIn.dart';
@@ -114,7 +115,7 @@ class StudentDashboardState extends State<StudentDashboard> {
                       onTap: () {
                     Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => teacherdashboard()),
+                          MaterialPageRoute(builder: (context) => guideline()),
                         );
 
                 },

@@ -129,7 +129,11 @@ class _lonInState extends State<lonIn> {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter some text';
                                     }
-                                  })))),
+                                  }
+                                  )
+                          )
+                      )
+                  ),
 
                   const SizedBox(
                     height: 10,

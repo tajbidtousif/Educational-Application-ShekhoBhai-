@@ -94,9 +94,10 @@ class _Blog_screenState extends State<Blog_screen> {
                     {
                       return Padding(
                         padding: const EdgeInsets.all(10),
+
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade100,
+                            color: Colors.grey.shade300,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Column(

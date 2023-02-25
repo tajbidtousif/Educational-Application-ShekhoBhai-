@@ -39,7 +39,7 @@ class _UserListScreenState extends State<UserListScreen> {
           },
         ),
         backgroundColor: Colors.white,
-        title: Text("List of Users",
+        title: Text("Inbox",
           style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,
           ),
 
