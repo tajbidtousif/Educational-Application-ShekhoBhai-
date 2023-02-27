@@ -3,7 +3,7 @@ import 'logIn.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'signup.dart';
 
-enum ProductTypeEnum { Student, Teacher }
+
 
 class welcomePage extends StatefulWidget {
   welcomePage({Key? key}) : super(key: key);
@@ -13,10 +13,10 @@ class welcomePage extends StatefulWidget {
 }
 
 final controller = LiquidController();
-int _value = 1;
+
 
 class _welcomePageState extends State<welcomePage> {
-  ProductTypeEnum? _productTypeEnum;
+
 
   @override
   Widget build(BuildContext context) {

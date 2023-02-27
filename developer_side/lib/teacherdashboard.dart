@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'Bootcamp_Screen_for_Student.dart';
 import 'Bootcamp_Screen_for_Teacher.dart';
 import 'UserListScreen.dart';
+import 'ViewCourse.dart';
 import 'welcomePage.dart';
 import 'logIn.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -149,10 +150,10 @@ class teacherdashboardState extends State<teacherdashboard> {
 
                             InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(builder: (context) => teacherdashboard()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ViewCourse()),
+                                );
 
                               },
                               child: Container(
