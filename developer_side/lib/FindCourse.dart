@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class UI extends StatefulWidget {
-  const UI({super.key});
+class FindCourse extends StatefulWidget {
+  const FindCourse({super.key});
 
   @override
-  State<UI> createState() => _UIState();
+  State<FindCourse> createState() => _FindCourseState();
 }
 
-class _UIState extends State<UI> {
+class _FindCourseState extends State<FindCourse> {
 
 
   @override
@@ -17,11 +17,9 @@ class _UIState extends State<UI> {
 
       appBar: AppBar(
         centerTitle: true,
-        title: Text("UI"),
+        title: Text("Find Course"),
         backgroundColor: Colors.black,
       ),
-
-
 
       /* body: SingleChildScrollView(
 
@@ -37,7 +35,7 @@ class _UIState extends State<UI> {
       body: SafeArea(
         child: WebView(
           javascriptMode: JavascriptMode.unrestricted,
-          initialUrl: 'https://www.w3schools.com/css/css3_user_interface.asp',
+          initialUrl: 'https://youtube.com/playlist?list=PLqNBlx2ohcuyPQFJdGjGWJlD4Y3r7O_df',
         ),
       ),
     );

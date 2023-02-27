@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class Webdevelopment extends StatefulWidget {
   const Webdevelopment({super.key});
@@ -8,30 +9,39 @@ class Webdevelopment extends StatefulWidget {
 }
 
 class _WebdevelopmentState extends State<Webdevelopment> {
+
+
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-              
-              appBar: AppBar(
-                centerTitle: true,
-                title: Text("WEB DEVELOPMENT"),
-                backgroundColor: Colors.black,
-              ),
-              
-              
-              
-              body: SingleChildScrollView(
-                
+    return Scaffold(
+
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Web Development"),
+        backgroundColor: Colors.black,
+      ),
+
+
+
+      /* body: SingleChildScrollView(
+
                 child: Container(
-                  
-                 child: Text("Web development is the process of building websites and applications for the internet, or for a private network known as an intranet.Web development is not concerned with the design of a website; rather, it’s all about the coding and programming that powers the website s functionality.From the most simple, static web pages to social media platforms and apps, from e-commerce websites to content management systems (CMS) all the tools we use via the internet on a daily basis have been built by developers.In the world of web development, languages are the building blocks that programmers use to create websites, apps and software. There are all different types of languages, including programming languages, markup languages, style sheet languages, and database languages.Web developers also work with libraries and frameworks. Despite much confusion, they are not the same thing—although they are both there to make the developer’s job easier.Libraries and frameworks are essentially sets of prewritten code, but libraries are smaller and tend to be used for more specific use-cases. A library contains a collection of useful code, grouped together to be reused later. The purpose of a library is to enable developers to reach the same end goal while writing less code to get there.Let’s take the example of JavaScript, the language, and jQuery, a JavaScript library. Rather than writing, say, ten lines of code in JavaScript, the developer can take the condensed, prewritten version from the jQuery library—saving time and effort.",
+
+                 child: Text("Programming… Competitive Programming… It teaches you how to think?. If you are a programmer, you might have understood the deep meaning of these lines quoted by Steve Jobs and you might have also experienced that even after shutting down your computer you keep on thinking about programming stuff or code you have written in your project. Once you enter in programming you just don’t learn how to code but you also learn the “art of thinking”, by breaking your code into smaller chunks and then using your logic-based creativity to solve a problem from different angles. Programming is fun, programming is an exercise for your brain, programming is a mental sport and when this sport is held on the internet involving sports programmer as a contestant, then it is called Competitive Programming.Programming is a challenging role and once you enter this field you will encounter new challenges and you may have to solve some problems which no one has solved before or their solution doesn’t exist anywhere. At that time, you are expected to come up with a solution in the least possible time using your problem-solving and logical ability. So the one and clear goal behind this competitive programming is “To prepare a programmer such that his/her logical ability increases and he/she is able to write code for the challenging situation.” Another reason is that a lot of big companies, like Google, Facebook. Microsoft, Amazon hires through competitive programming, so if you want to get into these companies, then you really need to get your hands dirty in competitive programming.",
                  style: TextStyle(
                   fontSize: 25.0
-                 ),),               
+                 ),),
                    ),
-              ),
+              ),*/
 
-
+      body: SafeArea(
+        child: WebView(
+          javascriptMode: JavascriptMode.unrestricted,
+          initialUrl: 'https://www.w3schools.com/whatis/',
+        ),
+      ),
     );
+
   }
 }
+
