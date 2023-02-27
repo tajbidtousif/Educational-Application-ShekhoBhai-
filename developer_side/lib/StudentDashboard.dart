@@ -152,10 +152,10 @@ class StudentDashboardState extends State<StudentDashboard> {
 
                         InkWell(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => teacherdashboard()),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(builder: (context) => teacherdashboard()),
+                            // );
 
                           },
                           child: Container(
