@@ -63,13 +63,13 @@ class _FindCourseState extends State<FindCourse> {
                               },
                               child: Container(
 
-                                padding: EdgeInsets.all(5),
+                                padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   color: Colors.blue[200],
                                   borderRadius: BorderRadius.circular(20),
                                   boxShadow: [
                                     BoxShadow(
-                                      offset: Offset(0, 17),
+                                      offset: Offset(0, 15),
                                       blurRadius: 50,
                                       spreadRadius: -13,
                                       //color: Colors.blue[100],
@@ -98,7 +98,7 @@ class _FindCourseState extends State<FindCourse> {
                               },
                               child: Container(
 
-                                padding: EdgeInsets.all(5),
+                                padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                   color: Colors.deepPurple[300],
                                   borderRadius: BorderRadius.circular(13),
