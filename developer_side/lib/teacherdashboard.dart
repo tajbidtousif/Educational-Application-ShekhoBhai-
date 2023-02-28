@@ -2,6 +2,7 @@ import 'package:developer_side/Blog_screen.dart';
 import 'package:developer_side/countingSession.dart';
 import 'package:developer_side/logIn.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Bootcamp_Screen_for_Student.dart';
 import 'Bootcamp_Screen_for_Teacher.dart';
@@ -110,10 +111,15 @@ class teacherdashboardState extends State<teacherdashboard> {
 
                             InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(builder: (context) => teacherdashboard()),
-                                // );
+                                Fluttertoast.showToast(
+                                    msg: "Feature Coming Soon",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.grey[500],
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                );
 
                               },
                               child: Container(

@@ -1,5 +1,9 @@
+import 'package:developer_side/ComputerGraphics.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import 'Oop.dart';
+import 'TOC.dart';
 
 class ViewCourse extends StatefulWidget {
   const ViewCourse({super.key});
@@ -10,35 +14,161 @@ class ViewCourse extends StatefulWidget {
 
 class _ViewCourseState extends State<ViewCourse> {
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text("View Course"),
-        backgroundColor: Colors.black,
-      ),
-
-      /* body: SingleChildScrollView(
-
-                child: Container(
-
-                 child: Text("Programming… Competitive Programming… It teaches you how to think?. If you are a programmer, you might have understood the deep meaning of these lines quoted by Steve Jobs and you might have also experienced that even after shutting down your computer you keep on thinking about programming stuff or code you have written in your project. Once you enter in programming you just don’t learn how to code but you also learn the “art of thinking”, by breaking your code into smaller chunks and then using your logic-based creativity to solve a problem from different angles. Programming is fun, programming is an exercise for your brain, programming is a mental sport and when this sport is held on the internet involving sports programmer as a contestant, then it is called Competitive Programming.Programming is a challenging role and once you enter this field you will encounter new challenges and you may have to solve some problems which no one has solved before or their solution doesn’t exist anywhere. At that time, you are expected to come up with a solution in the least possible time using your problem-solving and logical ability. So the one and clear goal behind this competitive programming is “To prepare a programmer such that his/her logical ability increases and he/she is able to write code for the challenging situation.” Another reason is that a lot of big companies, like Google, Facebook. Microsoft, Amazon hires through competitive programming, so if you want to get into these companies, then you really need to get your hands dirty in competitive programming.",
-                 style: TextStyle(
-                  fontSize: 25.0
-                 ),),
-                   ),
-              ),*/
-
-      body: SafeArea(
-        child: WebView(
-          javascriptMode: JavascriptMode.unrestricted,
-          initialUrl: 'https://youtube.com/playlist?list=PLqNBlx2ohcuyPQFJdGjGWJlD4Y3r7O_df',
+    return  Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          backgroundColor: Colors.white,
+          title: Text(
+            'Find your Course',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
-      ),
+        body: Stack(
+          children: <Widget>[
+
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+
+                    Expanded(
+                      child: GridView.count(
+                          crossAxisCount: 2,
+                          childAspectRatio: .90,
+                          crossAxisSpacing: 70,
+                          mainAxisSpacing: 20,
+                          children: <Widget>[
+
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ComputerGraphics()),
+                                );
+
+                              },
+                              child: Container(
+
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[200],
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 17),
+                                      blurRadius: 50,
+                                      spreadRadius: -13,
+                                      //color: Colors.blue[100],
+                                    ),
+                                  ],
+                                ),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 50),
+                                  Text(
+                                    'Computer Graphics',
+                                    style: TextStyle(
+                                        fontSize: 30, fontWeight: FontWeight.w600),
+                                  ),
+                                ]),
+                              ),
+                            ),
+
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => TOC()),
+                                );
+
+                              },
+                              child: Container(
+
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.deepPurple[300],
+                                  borderRadius: BorderRadius.circular(13),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 17),
+                                      blurRadius: 50,
+                                      spreadRadius: -13,
+                                      //color: Colors.blue[100],
+                                    ),
+                                  ],
+                                ),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 60),
+                                  Text(
+                                    'TOC',
+                                    style: TextStyle(
+                                        fontSize: 30, fontWeight: FontWeight.w600),
+                                  ),
+                                ]),
+                              ),
+                            ),
+
+
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Oop()),
+                                );
+
+                              },
+                              child: Container(
+
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.green[300],
+                                  borderRadius: BorderRadius.circular(13),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 17),
+                                      blurRadius: 50,
+                                      spreadRadius: -13,
+                                      //color: Colors.blue[100],
+                                    ),
+                                  ],
+                                ),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 60),
+
+                                  Text(
+                                    'OOP',
+                                    style: TextStyle(
+                                        fontSize: 30, fontWeight: FontWeight.w600),
+                                  ),
+                                ]),
+                              ),
+                            ),
+                          ]),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )
     );
+
+
 
   }
 }
