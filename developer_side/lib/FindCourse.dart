@@ -81,7 +81,7 @@ class _FindCourseState extends State<FindCourse> {
                                   Text(
                                     'Computer Graphics',
                                     style: TextStyle(
-                                        fontSize: 30, fontWeight: FontWeight.w600),
+                                        fontSize: 15, fontWeight: FontWeight.w600),
                                   ),
                                 ]),
                               ),
