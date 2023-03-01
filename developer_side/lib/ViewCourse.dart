@@ -28,7 +28,7 @@ class _ViewCourseState extends State<ViewCourse> {
               },
             ),
             backgroundColor: Colors.white,
-            title: Text("Find Course",
+            title: Text("View Course",
               style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,
               ),
 
