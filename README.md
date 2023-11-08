@@ -27,7 +27,7 @@ https://drive.google.com/file/d/1AcwOw5zQyjWA9QJLWX_HdEcXWTsdqLOx/view?usp=shari
 
 To set up and run this Flutter project locally, follow these steps:
 
-1. Clone the repository: https://github.com/Takrimelahichowdhury/Educational-Application-ShekhoBhai-.git
+1. Clone the repository: https://github.com/tajbidtousif/Educational-Application-ShekhoBhai-.git
 
 2. Install the necessary dependencies:
      flutter pub get 
@@ -48,7 +48,7 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-If you have any questions or need further information, you can reach us at elahitakrim@gmail.com & tajbidtousif@gmail.com.
+If you have any questions or need further information, you can reach us at elahitakrim@gmail.com & tajbidtousif@gmail.com & suchonaghoshtithi159@gmail.com.
 
 ## Thank You
 
