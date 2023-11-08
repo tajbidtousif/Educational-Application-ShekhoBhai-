@@ -16,7 +16,7 @@
 - *Share Experience*: Share your professional experiences with students.
 - *Bootcamp Announcements*: Keep students informed about upcoming events and bootcamps.
   
-![Shekobhai Screenshot](https://github.com/tajbidtousif/Educational-Application-ShekhoBhai-/assets/86789646/d33b5b28-f7f1-404b-9243-c79678a44c87)
+![Shekobhai Screenshot](https://github.com/tajbidtousif/Educational-Application-ShekhoBhai-/assets/86789646/e6770735-2795-4730-a874-b6fe3ff0f18b)
 
 
 
