@@ -2,7 +2,7 @@
 
 *Shekhobhai* An educational application provides a platform for students and teachers to connect, learn, and grow in the field of computer science. It offers various features for both students and teachers.
 
-## Features
+## Features-
 
 ### For Students
 - *Guidance*: Explore different fields of computer science.
